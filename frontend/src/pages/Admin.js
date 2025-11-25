@@ -37,9 +37,7 @@ const Admin = () => {
       ]);
       setProjects(projectsRes.data.data);
       setPosts(postsRes.data.data);
-      setError(null);
     } catch (err) {
-      setError('加载数据失败');
       console.error('Error fetching data:', err);
     } finally {
       setLoading(false);
