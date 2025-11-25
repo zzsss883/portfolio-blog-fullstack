@@ -5,7 +5,7 @@ import './BlogPostCard.css';
 const BlogPostCard = ({ post }) => {
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('zh-CN', {
+    return date.toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
@@ -19,7 +19,7 @@ const BlogPostCard = ({ post }) => {
           <Link to={`/blog/${post._id}`}>{post.title}</Link>
         </h3>
         <div className="blog-meta">
-          <span className="blog-author">作者: {post.author?.username || '未知'}</span>
+          <span className="blog-author">Author: {post.author?.username || 'Unknown'}</span>
           <span className="blog-date">{formatDate(post.createdAt)}</span>
         </div>
       </div>
@@ -29,7 +29,7 @@ const BlogPostCard = ({ post }) => {
           : post.content}
       </p>
       <Link to={`/blog/${post._id}`} className="btn btn-primary btn-small">
-        阅读更多
+        Read More
       </Link>
     </div>
   );

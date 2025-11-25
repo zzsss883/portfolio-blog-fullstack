@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, loading } = useContext(AuthContext);
 
   if (loading) {
-    return <div className="loading">加载中...</div>;
+    return <div className="loading">Loading...</div>;
   }
 
   if (!isAuthenticated) {

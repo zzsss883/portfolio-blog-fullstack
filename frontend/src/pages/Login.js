@@ -42,11 +42,11 @@ const Login = () => {
     <div className="auth-page">
       <div className="container">
         <div className="auth-card card">
-          <h1>登录</h1>
+          <h1>Login</h1>
           <form onSubmit={handleSubmit} className="auth-form">
             {error && <div className="error-message">{error}</div>}
             <div className="form-group">
-              <label htmlFor="email" className="form-label">邮箱</label>
+              <label htmlFor="email" className="form-label">Email</label>
               <input
                 type="email"
                 id="email"
@@ -58,7 +58,7 @@ const Login = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="password" className="form-label">密码</label>
+              <label htmlFor="password" className="form-label">Password</label>
               <input
                 type="password"
                 id="password"
@@ -74,10 +74,10 @@ const Login = () => {
               className="btn btn-primary btn-full"
               disabled={loading}
             >
-              {loading ? '登录中...' : '登录'}
+              {loading ? 'Logging in...' : 'Login'}
             </button>
             <p className="auth-link">
-              还没有账号？ <Link to="/register">立即注册</Link>
+              Don't have an account? <Link to="/register">Register now</Link>
             </p>
           </form>
         </div>

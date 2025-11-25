@@ -30,13 +30,13 @@ const Register = () => {
     setError('');
 
     if (formData.password !== formData.confirmPassword) {
-      setError('两次输入的密码不一致');
+      setError('Passwords do not match');
       setLoading(false);
       return;
     }
 
     if (formData.password.length < 6) {
-      setError('密码长度至少为6个字符');
+      setError('Password must be at least 6 characters');
       setLoading(false);
       return;
     }
@@ -60,11 +60,11 @@ const Register = () => {
     <div className="auth-page">
       <div className="container">
         <div className="auth-card card">
-          <h1>注册</h1>
+          <h1>Register</h1>
           <form onSubmit={handleSubmit} className="auth-form">
             {error && <div className="error-message">{error}</div>}
             <div className="form-group">
-              <label htmlFor="username" className="form-label">用户名</label>
+              <label htmlFor="username" className="form-label">Username</label>
               <input
                 type="text"
                 id="username"
@@ -77,7 +77,7 @@ const Register = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="email" className="form-label">邮箱</label>
+              <label htmlFor="email" className="form-label">Email</label>
               <input
                 type="email"
                 id="email"
@@ -89,7 +89,7 @@ const Register = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="password" className="form-label">密码</label>
+              <label htmlFor="password" className="form-label">Password</label>
               <input
                 type="password"
                 id="password"
@@ -102,7 +102,7 @@ const Register = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="confirmPassword" className="form-label">确认密码</label>
+              <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
               <input
                 type="password"
                 id="confirmPassword"
@@ -119,10 +119,10 @@ const Register = () => {
               className="btn btn-primary btn-full"
               disabled={loading}
             >
-              {loading ? '注册中...' : '注册'}
+              {loading ? 'Registering...' : 'Register'}
             </button>
             <p className="auth-link">
-              已有账号？ <Link to="/login">立即登录</Link>
+              Already have an account? <Link to="/login">Login now</Link>
             </p>
           </form>
         </div>

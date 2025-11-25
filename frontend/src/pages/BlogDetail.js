@@ -32,7 +32,7 @@ const BlogDetail = () => {
       }
       setError(null);
     } catch (err) {
-      setError('加载文章失败，请稍后重试');
+      setError('Failed to load article, please try again later');
       console.error('Error fetching post:', err);
     } finally {
       setLoading(false);
@@ -63,7 +63,7 @@ const BlogDetail = () => {
       setCommentBody('');
       fetchComments();
     } catch (err) {
-      alert('发表评论失败，请重试');
+      alert('Failed to post comment, please try again');
       console.error('Error submitting comment:', err);
     } finally {
       setSubmitting(false);
@@ -72,7 +72,7 @@ const BlogDetail = () => {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('zh-CN', {
+    return date.toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
@@ -82,11 +82,11 @@ const BlogDetail = () => {
   };
 
   if (loading) {
-    return <div className="loading">加载中...</div>;
+    return <div className="loading">Loading...</div>;
   }
 
   if (error || !post) {
-    return <div className="error">{error || '文章不存在'}</div>;
+    return <div className="error">{error || 'Article not found'}</div>;
   }
 
   return (
@@ -96,7 +96,7 @@ const BlogDetail = () => {
           <div className="post-header">
             <h1 className="post-title">{post.title}</h1>
             <div className="post-meta">
-              <span>作者: {post.author?.username || '未知'}</span>
+              <span>Author: {post.author?.username || 'Unknown'}</span>
               <span>{formatDate(post.createdAt)}</span>
             </div>
           </div>
@@ -108,7 +108,7 @@ const BlogDetail = () => {
         </article>
 
         <section className="comments-section card">
-          <h2>评论 ({comments.length})</h2>
+          <h2>Comments ({comments.length})</h2>
           
           {isAuthenticated ? (
             <form onSubmit={handleSubmitComment} className="comment-form">
@@ -117,7 +117,7 @@ const BlogDetail = () => {
                   className="form-textarea"
                   value={commentBody}
                   onChange={(e) => setCommentBody(e.target.value)}
-                  placeholder="写下您的评论..."
+                  placeholder="Write your comment..."
                   rows="4"
                 />
               </div>
@@ -126,23 +126,23 @@ const BlogDetail = () => {
                 className="btn btn-primary"
                 disabled={submitting || !commentBody.trim()}
               >
-                {submitting ? '提交中...' : '发表评论'}
+                {submitting ? 'Submitting...' : 'Post Comment'}
               </button>
             </form>
           ) : (
             <p className="login-prompt">
-              请 <a href="/login">登录</a> 后发表评论
+              Please <a href="/login">login</a> to post a comment
             </p>
           )}
 
           <div className="comments-list">
             {comments.length === 0 ? (
-              <p className="no-comments">暂无评论</p>
+              <p className="no-comments">No comments yet</p>
             ) : (
               comments.map((comment) => (
                 <div key={comment._id} className="comment-item">
                   <div className="comment-header">
-                    <strong>{comment.author?.username || '匿名'}</strong>
+                    <strong>{comment.author?.username || 'Anonymous'}</strong>
                     <span className="comment-date">{formatDate(comment.createdAt)}</span>
                   </div>
                   <p className="comment-body">{comment.body}</p>

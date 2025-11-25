@@ -21,7 +21,7 @@ const Projects = () => {
       setProjects(response.data.data);
       setError(null);
     } catch (err) {
-      setError('加载项目失败，请稍后重试');
+      setError('Failed to load projects. Please try again later.');
       console.error('Error fetching projects:', err);
     } finally {
       setLoading(false);
@@ -29,7 +29,7 @@ const Projects = () => {
   };
 
   if (loading) {
-    return <div className="loading">加载中...</div>;
+    return <div className="loading">Loading...</div>;
   }
 
   if (error) {
@@ -40,12 +40,12 @@ const Projects = () => {
     <div className="projects-page">
       <div className="container">
         <div className="page-header">
-          <h1>我的项目</h1>
-          <p>以下是我完成的一些项目展示</p>
+          <h1>My Projects</h1>
+          <p>Here are some of my completed projects</p>
         </div>
         {projects.length === 0 ? (
           <div className="empty-state">
-            <p>暂无项目展示</p>
+            <p>No projects to display yet</p>
           </div>
         ) : (
           <div className="projects-grid">

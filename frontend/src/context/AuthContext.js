@@ -61,7 +61,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       return {
         success: false,
-        message: error.response?.data?.message || '登录失败，请检查您的凭据'
+        message: error.response?.data?.message || 'Login failed, please check your credentials'
       };
     }
   };
@@ -85,7 +85,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       return {
         success: false,
-        message: error.response?.data?.message || '注册失败，请重试'
+        message: error.response?.data?.message || 'Registration failed, please try again'
       };
     }
   };

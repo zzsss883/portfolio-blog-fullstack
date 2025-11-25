@@ -21,7 +21,7 @@ const Blog = () => {
       setPosts(response.data.data);
       setError(null);
     } catch (err) {
-      setError('加载博客文章失败，请稍后重试');
+      setError('Failed to load blog posts, please try again later');
       console.error('Error fetching posts:', err);
     } finally {
       setLoading(false);
@@ -29,7 +29,7 @@ const Blog = () => {
   };
 
   if (loading) {
-    return <div className="loading">加载中...</div>;
+    return <div className="loading">Loading...</div>;
   }
 
   if (error) {
@@ -40,12 +40,12 @@ const Blog = () => {
     <div className="blog-page">
       <div className="container">
         <div className="page-header">
-          <h1>技术博客</h1>
-          <p>分享我的学习心得和技术见解</p>
+          <h1>Tech Blog</h1>
+          <p>Sharing my learning experiences and technical insights</p>
         </div>
         {posts.length === 0 ? (
           <div className="empty-state">
-            <p>暂无博客文章</p>
+            <p>No blog posts yet</p>
           </div>
         ) : (
           <div className="blog-grid">

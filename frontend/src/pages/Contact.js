@@ -28,12 +28,12 @@ const Contact = () => {
         `${process.env.REACT_APP_API_URL || 'http://localhost:5001'}/api/contact`,
         formData
       );
-      setSubmitStatus({ type: 'success', message: '消息发送成功！我会尽快回复您。' });
+      setSubmitStatus({ type: 'success', message: 'Message sent successfully! I will reply to you as soon as possible.' });
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
       setSubmitStatus({
         type: 'error',
-        message: error.response?.data?.message || '发送失败，请稍后重试'
+        message: error.response?.data?.message || 'Failed to send, please try again later'
       });
     } finally {
       setSubmitting(false);
@@ -44,14 +44,14 @@ const Contact = () => {
     <div className="contact-page">
       <div className="container">
         <div className="page-header">
-          <h1>联系我</h1>
-          <p>有任何问题或合作意向？随时与我取得联系</p>
+          <h1>Contact Me</h1>
+          <p>Have any questions or collaboration opportunities? Feel free to get in touch</p>
         </div>
         <div className="contact-content">
           <div className="contact-form-wrapper card">
             <form onSubmit={handleSubmit} className="contact-form">
               <div className="form-group">
-                <label htmlFor="name" className="form-label">姓名</label>
+                <label htmlFor="name" className="form-label">Name</label>
                 <input
                   type="text"
                   id="name"
@@ -63,7 +63,7 @@ const Contact = () => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="email" className="form-label">邮箱</label>
+                <label htmlFor="email" className="form-label">Email</label>
                 <input
                   type="email"
                   id="email"
@@ -75,7 +75,7 @@ const Contact = () => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="message" className="form-label">消息</label>
+                <label htmlFor="message" className="form-label">Message</label>
                 <textarea
                   id="message"
                   name="message"
@@ -100,7 +100,7 @@ const Contact = () => {
                 className="btn btn-primary"
                 disabled={submitting}
               >
-                {submitting ? '发送中...' : '发送消息'}
+                {submitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>

@@ -16,22 +16,22 @@ const Header = () => {
             <span className="logo-text">Portfolio</span>
           </Link>
           <nav className="nav">
-            <Link to="/" className="nav-link">首页</Link>
-            <Link to="/projects" className="nav-link">项目</Link>
-            <Link to="/blog" className="nav-link">博客</Link>
-            <Link to="/contact" className="nav-link">联系</Link>
+            <Link to="/" className="nav-link">Home</Link>
+            <Link to="/projects" className="nav-link">Projects</Link>
+            <Link to="/blog" className="nav-link">Blog</Link>
+            <Link to="/contact" className="nav-link">Contact</Link>
             {isAuthenticated ? (
               <>
-                <Link to="/admin" className="nav-link">管理</Link>
+                <Link to="/admin" className="nav-link">Admin</Link>
                 <button onClick={logout} className="btn btn-outline btn-small">
-                  退出
+                  Logout
                 </button>
               </>
             ) : (
               <>
-                <Link to="/login" className="nav-link">登录</Link>
+                <Link to="/login" className="nav-link">Login</Link>
                 <Link to="/register" className="btn btn-primary btn-small">
-                  注册
+                  Register
                 </Link>
               </>
             )}

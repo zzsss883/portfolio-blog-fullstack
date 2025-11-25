@@ -63,7 +63,7 @@ const Admin = () => {
       setEditingProject(null);
       fetchData();
     } catch (err) {
-      alert('操作失败，请重试');
+      alert('Operation failed, please try again');
       console.error('Error submitting project:', err);
     } finally {
       setSubmitting(false);
@@ -89,7 +89,7 @@ const Admin = () => {
       setEditingPost(null);
       fetchData();
     } catch (err) {
-      alert('操作失败，请重试');
+      alert('Operation failed, please try again');
       console.error('Error submitting post:', err);
     } finally {
       setSubmitting(false);
@@ -97,27 +97,27 @@ const Admin = () => {
   };
 
   const handleDeleteProject = async (id) => {
-    if (!window.confirm('确定要删除这个项目吗？')) return;
+    if (!window.confirm('Are you sure you want to delete this project?')) return;
     try {
       await axios.delete(
         `${process.env.REACT_APP_API_URL || 'http://localhost:5001'}/api/projects/${id}`
       );
       fetchData();
     } catch (err) {
-      alert('删除失败，请重试');
+      alert('Delete failed, please try again');
       console.error('Error deleting project:', err);
     }
   };
 
   const handleDeletePost = async (id) => {
-    if (!window.confirm('确定要删除这篇文章吗？')) return;
+    if (!window.confirm('Are you sure you want to delete this article?')) return;
     try {
       await axios.delete(
         `${process.env.REACT_APP_API_URL || 'http://localhost:5001'}/api/blog/${id}`
       );
       fetchData();
     } catch (err) {
-      alert('删除失败，请重试');
+      alert('Delete failed, please try again');
       console.error('Error deleting post:', err);
     }
   };
@@ -149,15 +149,15 @@ const Admin = () => {
   };
 
   if (loading) {
-    return <div className="loading">加载中...</div>;
+    return <div className="loading">Loading...</div>;
   }
 
   return (
     <div className="admin-page">
       <div className="container">
         <div className="page-header">
-          <h1>管理面板</h1>
-          <p>管理您的项目和博客文章</p>
+          <h1>Admin Panel</h1>
+          <p>Manage your projects and blog posts</p>
         </div>
 
         <div className="admin-tabs">
@@ -165,23 +165,23 @@ const Admin = () => {
             className={`tab-btn ${activeTab === 'projects' ? 'active' : ''}`}
             onClick={() => setActiveTab('projects')}
           >
-            项目管理
+            Project Management
           </button>
           <button
             className={`tab-btn ${activeTab === 'posts' ? 'active' : ''}`}
             onClick={() => setActiveTab('posts')}
           >
-            博客管理
+            Blog Management
           </button>
         </div>
 
         {activeTab === 'projects' && (
           <div className="admin-section">
             <div className="admin-form card">
-              <h2>{editingProject ? '编辑项目' : '创建新项目'}</h2>
+              <h2>{editingProject ? 'Edit Project' : 'Create New Project'}</h2>
               <form onSubmit={handleProjectSubmit}>
                 <div className="form-group">
-                  <label className="form-label">标题</label>
+                  <label className="form-label">Title</label>
                   <input
                     type="text"
                     className="form-input"
@@ -191,7 +191,7 @@ const Admin = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label className="form-label">描述</label>
+                  <label className="form-label">Description</label>
                   <textarea
                     className="form-textarea"
                     value={projectForm.description}
@@ -201,7 +201,7 @@ const Admin = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label className="form-label">图片URL</label>
+                  <label className="form-label">Image URL</label>
                   <input
                     type="url"
                     className="form-input"
@@ -210,7 +210,7 @@ const Admin = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label className="form-label">代码仓库URL</label>
+                  <label className="form-label">Repository URL</label>
                   <input
                     type="url"
                     className="form-input"
@@ -219,7 +219,7 @@ const Admin = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label className="form-label">在线预览URL</label>
+                  <label className="form-label">Live Preview URL</label>
                   <input
                     type="url"
                     className="form-input"
@@ -229,11 +229,11 @@ const Admin = () => {
                 </div>
                 <div className="form-actions">
                   <button type="submit" className="btn btn-primary" disabled={submitting}>
-                    {submitting ? '提交中...' : editingProject ? '更新' : '创建'}
+                    {submitting ? 'Submitting...' : editingProject ? 'Update' : 'Create'}
                   </button>
                   {editingProject && (
                     <button type="button" className="btn btn-outline" onClick={cancelEdit}>
-                      取消
+                      Cancel
                     </button>
                   )}
                 </div>
@@ -241,9 +241,9 @@ const Admin = () => {
             </div>
 
             <div className="admin-list">
-              <h2>现有项目</h2>
+              <h2>Existing Projects</h2>
               {projects.length === 0 ? (
-                <p className="empty-state">暂无项目</p>
+                <p className="empty-state">No projects yet</p>
               ) : (
                 <div className="list-items">
                   {projects.map((project) => (
@@ -257,14 +257,14 @@ const Admin = () => {
                           className="btn btn-outline btn-small"
                           onClick={() => startEditProject(project)}
                         >
-                          编辑
+                          Edit
                         </button>
                         <button
                           className="btn btn-outline btn-small"
                           onClick={() => handleDeleteProject(project._id)}
                           style={{ color: '#DC2626', borderColor: '#DC2626' }}
                         >
-                          删除
+                          Delete
                         </button>
                       </div>
                     </div>
@@ -278,10 +278,10 @@ const Admin = () => {
         {activeTab === 'posts' && (
           <div className="admin-section">
             <div className="admin-form card">
-              <h2>{editingPost ? '编辑文章' : '创建新文章'}</h2>
+              <h2>{editingPost ? 'Edit Article' : 'Create New Article'}</h2>
               <form onSubmit={handlePostSubmit}>
                 <div className="form-group">
-                  <label className="form-label">标题</label>
+                  <label className="form-label">Title</label>
                   <input
                     type="text"
                     className="form-input"
@@ -291,7 +291,7 @@ const Admin = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label className="form-label">内容</label>
+                  <label className="form-label">Content</label>
                   <textarea
                     className="form-textarea"
                     value={postForm.content}
@@ -302,11 +302,11 @@ const Admin = () => {
                 </div>
                 <div className="form-actions">
                   <button type="submit" className="btn btn-primary" disabled={submitting}>
-                    {submitting ? '提交中...' : editingPost ? '更新' : '创建'}
+                    {submitting ? 'Submitting...' : editingPost ? 'Update' : 'Create'}
                   </button>
                   {editingPost && (
                     <button type="button" className="btn btn-outline" onClick={cancelEdit}>
-                      取消
+                      Cancel
                     </button>
                   )}
                 </div>
@@ -314,9 +314,9 @@ const Admin = () => {
             </div>
 
             <div className="admin-list">
-              <h2>现有文章</h2>
+              <h2>Existing Articles</h2>
               {posts.length === 0 ? (
-                <p className="empty-state">暂无文章</p>
+                <p className="empty-state">No articles yet</p>
               ) : (
                 <div className="list-items">
                   {posts.map((post) => (
@@ -330,14 +330,14 @@ const Admin = () => {
                           className="btn btn-outline btn-small"
                           onClick={() => startEditPost(post)}
                         >
-                          编辑
+                          Edit
                         </button>
                         <button
                           className="btn btn-outline btn-small"
                           onClick={() => handleDeletePost(post._id)}
                           style={{ color: '#DC2626', borderColor: '#DC2626' }}
                         >
-                          删除
+                          Delete
                         </button>
                       </div>
                     </div>

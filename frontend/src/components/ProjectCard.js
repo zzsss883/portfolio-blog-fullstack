@@ -20,7 +20,7 @@ const ProjectCard = ({ project }) => {
               rel="noopener noreferrer"
               className="btn btn-outline btn-small"
             >
-              代码仓库
+              Repository
             </a>
           )}
           {project.liveUrl && (
@@ -30,7 +30,7 @@ const ProjectCard = ({ project }) => {
               rel="noopener noreferrer"
               className="btn btn-primary btn-small"
             >
-              在线预览
+              Live Preview
             </a>
           )}
         </div>
