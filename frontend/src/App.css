@@ -6,155 +6,522 @@
 
 .main-content {
   flex: 1;
-  padding: 2rem 0;
+  padding: 0;
 }
 
-/* 鸿蒙设计风格 - 黄色和紫色主题 */
+/* ========================================
+   AURORA COSMOS DESIGN SYSTEM
+   ======================================== */
+
 :root {
-  --harmony-yellow: #FFD700;
-  --harmony-yellow-light: #FFF4CC;
-  --harmony-yellow-dark: #FFB800;
-  --harmony-purple: #8B5CF6;
-  --harmony-purple-light: #E9D5FF;
-  --harmony-purple-dark: #6D28D9;
-  --harmony-bg: #F8F9FA;
-  --harmony-text: #1A1A1A;
-  --harmony-text-light: #6B7280;
-  --harmony-white: #FFFFFF;
-  --harmony-shadow: rgba(139, 92, 246, 0.1);
+  /* Primary Neon Palette */
+  --neon-purple: #8000ff;
+  --neon-pink: #ff0080;
+  --neon-cyan: #00ffc8;
+  --neon-blue: #0096ff;
+  --neon-orange: #ff6b00;
+
+  /* Gradients */
+  --gradient-cosmic: linear-gradient(135deg, #8000ff 0%, #ff0080 50%, #00ffc8 100%);
+  --gradient-aurora: linear-gradient(135deg, #0096ff 0%, #8000ff 50%, #ff0080 100%);
+  --gradient-sunset: linear-gradient(135deg, #ff6b00 0%, #ff0080 100%);
+  --gradient-ocean: linear-gradient(135deg, #00ffc8 0%, #0096ff 100%);
+
+  /* Background Colors */
+  --bg-void: #050510;
+  --bg-deep: #0a0a1a;
+  --bg-surface: rgba(255, 255, 255, 0.02);
+  --bg-elevated: rgba(255, 255, 255, 0.04);
+  --bg-glass: rgba(255, 255, 255, 0.06);
+
+  /* Text Colors */
+  --text-white: #ffffff;
+  --text-light: rgba(255, 255, 255, 0.9);
+  --text-medium: rgba(255, 255, 255, 0.65);
+  --text-muted: rgba(255, 255, 255, 0.4);
+
+  /* Border & Effects */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-light: rgba(255, 255, 255, 0.12);
+  --border-glow: rgba(128, 0, 255, 0.5);
+
+  /* Shadows */
+  --shadow-glow-purple: 0 0 60px rgba(128, 0, 255, 0.4);
+  --shadow-glow-pink: 0 0 60px rgba(255, 0, 128, 0.4);
+  --shadow-glow-cyan: 0 0 60px rgba(0, 255, 200, 0.4);
+  --shadow-card: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+
+  /* Spacing */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 响应式容器 */
+/* Container */
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 2rem;
 }
 
-/* 卡片样式 */
+/* ========================================
+   GLASS MORPHISM CARDS - 3D EFFECT
+   ======================================== */
+
 .card {
-  background: var(--harmony-white);
-  border-radius: 16px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
   padding: 2rem;
-  box-shadow: 0 4px 20px var(--harmony-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* Gradient border effect */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(128,0,255,0.3), rgba(255,0,128,0.1), rgba(0,255,200,0.2));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.2);
+  transform: translateY(-8px) rotateX(2deg);
+  border-color: var(--border-light);
+  box-shadow: var(--shadow-card), var(--shadow-glow-purple);
 }
 
-/* 按钮样式 */
+/* Shine effect on hover */
+.card::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: linear-gradient(
+    45deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.03) 50%,
+    transparent 60%
+  );
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+  pointer-events: none;
+}
+
+.card:hover::after {
+  top: -50%;
+  left: -50%;
+}
+
+/* ========================================
+   BUTTONS - NEON STYLE
+   ======================================== */
+
 .btn {
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 2rem;
   border: none;
-  border-radius: 12px;
-  font-size: 1rem;
-  font-weight: 500;
+  border-radius: var(--radius-full);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
   text-decoration: none;
-  display: inline-block;
-  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.02em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--harmony-purple) 0%, var(--harmony-purple-dark) 100%);
-  color: var(--harmony-white);
+  background: var(--gradient-cosmic);
+  background-size: 200% 200%;
+  color: white;
+  box-shadow: 0 4px 30px rgba(128, 0, 255, 0.4);
+  animation: gradient-flow 3s ease infinite;
+}
+
+@keyframes gradient-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--harmony-purple-dark) 0%, var(--harmony-purple) 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 40px rgba(128, 0, 255, 0.6), 0 0 80px rgba(255, 0, 128, 0.3);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
 }
 
 .btn-secondary {
-  background: linear-gradient(135deg, var(--harmony-yellow) 0%, var(--harmony-yellow-dark) 100%);
-  color: var(--harmony-text);
+  background: var(--gradient-sunset);
+  background-size: 200% 200%;
+  color: white;
+  box-shadow: 0 4px 30px rgba(255, 107, 0, 0.3);
+  animation: gradient-flow 3s ease infinite;
 }
 
 .btn-secondary:hover {
-  background: linear-gradient(135deg, var(--harmony-yellow-dark) 0%, var(--harmony-yellow) 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 40px rgba(255, 107, 0, 0.5);
 }
 
 .btn-outline {
   background: transparent;
-  border: 2px solid var(--harmony-purple);
-  color: var(--harmony-purple);
+  border: 2px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  box-shadow: 0 0 20px rgba(0, 255, 200, 0.2);
 }
 
 .btn-outline:hover {
-  background: var(--harmony-purple);
-  color: var(--harmony-white);
+  background: var(--neon-cyan);
+  color: var(--bg-void);
+  box-shadow: 0 0 40px rgba(0, 255, 200, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px);
 }
 
-/* 表单样式 */
+.btn-ghost {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-light);
+  backdrop-filter: blur(10px);
+}
+
+.btn-ghost:hover {
+  border-color: var(--neon-purple);
+  background: rgba(128, 0, 255, 0.1);
+  box-shadow: 0 0 30px rgba(128, 0, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-small {
+  padding: 0.6rem 1.25rem;
+  font-size: 0.85rem;
+}
+
+/* ========================================
+   FORM ELEMENTS - FUTURISTIC
+   ======================================== */
+
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
 }
 
 .form-label {
   display: block;
-  margin-bottom: 0.5rem;
-  color: var(--harmony-text);
+  margin-bottom: 0.75rem;
+  color: var(--text-medium);
   font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .form-input,
 .form-textarea {
   width: 100%;
-  padding: 0.75rem 1rem;
-  border: 2px solid #E5E7EB;
-  border-radius: 12px;
+  padding: 1.1rem 1.5rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
   font-size: 1rem;
-  transition: border-color 0.3s ease;
-  font-family: inherit;
+  color: var(--text-white);
+  font-family: 'Space Grotesk', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-muted);
 }
 
 .form-input:focus,
 .form-textarea:focus {
   outline: none;
-  border-color: var(--harmony-purple);
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+  border-color: var(--neon-purple);
+  background: rgba(128, 0, 255, 0.05);
+  box-shadow: 0 0 0 4px rgba(128, 0, 255, 0.15), 0 0 30px rgba(128, 0, 255, 0.2);
 }
 
 .form-textarea {
-  min-height: 120px;
+  min-height: 160px;
   resize: vertical;
 }
 
-/* 加载和错误状态 */
+/* ========================================
+   LOADING & STATES
+   ======================================== */
+
 .loading {
   text-align: center;
-  padding: 3rem;
-  color: var(--harmony-text-light);
+  padding: 5rem 2rem;
+  color: var(--text-medium);
+  font-size: 1.1rem;
+}
+
+.loading::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin: 2rem auto 0;
+  border: 3px solid var(--border-subtle);
+  border-top-color: var(--neon-purple);
+  border-right-color: var(--neon-pink);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 .error {
   text-align: center;
   padding: 2rem;
-  background: #FEE2E2;
-  color: #DC2626;
-  border-radius: 12px;
+  background: rgba(255, 0, 80, 0.1);
+  border: 1px solid rgba(255, 0, 80, 0.3);
+  color: #ff4080;
+  border-radius: var(--radius-md);
   margin: 2rem 0;
+  backdrop-filter: blur(10px);
 }
 
-/* 响应式 */
+.success {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(0, 255, 200, 0.1);
+  border: 1px solid rgba(0, 255, 200, 0.3);
+  color: var(--neon-cyan);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(10px);
+}
+
+/* ========================================
+   PAGE HEADERS - DRAMATIC
+   ======================================== */
+
+.page-header {
+  text-align: center;
+  margin-bottom: 5rem;
+  position: relative;
+  padding-top: 2rem;
+}
+
+.page-header h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 800;
+  background: var(--gradient-cosmic);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  animation: text-shimmer 3s ease-in-out infinite;
+  background-size: 200% 200%;
+}
+
+@keyframes text-shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.page-header p {
+  color: var(--text-medium);
+  font-size: 1.2rem;
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ========================================
+   GRID LAYOUTS
+   ======================================== */
+
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* ========================================
+   TAGS & BADGES
+   ======================================== */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 1rem;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  color: var(--neon-cyan);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: all 0.3s ease;
+}
+
+.tag:hover {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 20px rgba(0, 255, 200, 0.2);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
-    padding: 0 1rem;
+    padding: 0 1.25rem;
   }
-  
+
   .card {
     padding: 1.5rem;
   }
-  
-  .main-content {
-    padding: 1rem 0;
+
+  .page-header {
+    margin-bottom: 3rem;
+  }
+
+  .page-header p {
+    font-size: 1rem;
+  }
+
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+    padding: 0.875rem 1.75rem;
   }
 }
 
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(128, 0, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(128, 0, 255, 0.6), 0 0 80px rgba(255, 0, 128, 0.3);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Stagger animation delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
