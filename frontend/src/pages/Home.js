@@ -105,7 +105,7 @@ const Home = () => {
                 </div>
               </div>
               <h3>PROJECTS</h3>
-              <p>// Explore portfolio of applications and solutions</p>
+              <p>{'// '}Explore portfolio of applications and solutions</p>
               <div className="panel-footer">
                 <span className="cyber-arrow">&gt;&gt;</span>
                 <span>ACCESS MODULE</span>
@@ -129,7 +129,7 @@ const Home = () => {
                 </div>
               </div>
               <h3>BLOG</h3>
-              <p>// Technical insights and development logs</p>
+              <p>{'// '}Technical insights and development logs</p>
               <div className="panel-footer">
                 <span className="cyber-arrow">&gt;&gt;</span>
                 <span>ACCESS MODULE</span>
@@ -153,7 +153,7 @@ const Home = () => {
                 </div>
               </div>
               <h3>CONTACT</h3>
-              <p>// Establish communication channel</p>
+              <p>{'// '}Establish communication channel</p>
               <div className="panel-footer">
                 <span className="cyber-arrow">&gt;&gt;</span>
                 <span>ACCESS MODULE</span>
@@ -224,7 +224,7 @@ const Home = () => {
                 <span className="cyber-bracket">/&gt;</span>
               </h2>
               <p className="cta-text">
-                // Let's build something extraordinary together
+                {'// '}Let's build something extraordinary together
               </p>
               <Link to="/contact" className="btn btn-primary btn-large">
                 [ INITIATE CONTACT ]
