@@ -1,347 +1,98 @@
 /* ========================================
-   BLOG DETAIL PAGE - AURORA COSMOS
+   BLOG DETAIL PAGE - CYBERPUNK
    ======================================== */
 
 .blog-detail-page {
   padding: 4rem 0 6rem;
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 75px);
 }
 
-/* Blog Post Container */
-.blog-post {
-  max-width: 800px;
-  margin: 0 auto 5rem;
+.blog-detail-content {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-/* Post Header */
-.post-header {
+/* Blog Header */
+.blog-detail-header {
   margin-bottom: 3rem;
-  padding-bottom: 2.5rem;
-  border-bottom: 1px solid var(--border-subtle);
-  position: relative;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid rgba(0, 255, 255, 0.2);
 }
 
-.post-header::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 100px;
-  height: 2px;
-  background: var(--gradient-cosmic);
-}
-
-.post-title {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 800;
-  color: var(--text-white);
+.blog-detail-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
   margin-bottom: 1.5rem;
-  line-height: 1.2;
-  letter-spacing: -0.03em;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
 }
 
-.post-meta {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  color: var(--text-muted);
-  font-size: 0.9rem;
+.blog-detail-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  color: var(--cyber-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 20px var(--cyber-cyan);
 }
 
-.post-meta-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.post-meta-item svg {
-  width: 18px;
-  height: 18px;
-  opacity: 0.7;
-}
-
-.post-author {
-  color: var(--neon-cyan);
-  font-weight: 500;
-}
-
-/* Post Content */
-.post-content {
-  color: var(--text-medium);
-  line-height: 2;
-  font-size: 1.1rem;
-}
-
-.post-content p {
-  margin-bottom: 1.75rem;
-}
-
-.post-content h2 {
-  font-family: 'Syne', sans-serif;
+.blog-detail-body {
+  font-family: 'Share Tech Mono', monospace;
+  line-height: 1.9;
   color: var(--text-white);
-  font-size: 1.875rem;
-  font-weight: 700;
-  margin: 3rem 0 1.5rem;
-  letter-spacing: -0.02em;
+  padding: 2.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--cyber-cyan);
+  clip-path: polygon(25px 0, 100% 0, 100% calc(100% - 25px), calc(100% - 25px) 100%, 0 100%, 0 25px);
 }
 
-.post-content h3 {
-  font-family: 'Syne', sans-serif;
-  color: var(--text-white);
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin: 2.5rem 0 1.25rem;
+.blog-detail-body h2,
+.blog-detail-body h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--cyber-magenta);
+  text-transform: uppercase;
+  text-shadow: 0 0 10px var(--cyber-magenta);
+  margin: 2rem 0 1rem;
 }
 
-.post-content a {
-  color: var(--neon-cyan);
+.blog-detail-body a {
+  color: var(--cyber-cyan);
+  border-bottom: 1px solid var(--cyber-cyan);
   text-decoration: none;
-  border-bottom: 1px solid rgba(0, 255, 200, 0.3);
-  transition: all 0.3s ease;
 }
 
-.post-content a:hover {
-  border-bottom-color: var(--neon-cyan);
-  text-shadow: 0 0 10px rgba(0, 255, 200, 0.3);
-}
-
-.post-content ul,
-.post-content ol {
-  margin: 1.5rem 0;
-  padding-left: 1.5rem;
-}
-
-.post-content li {
-  margin-bottom: 0.75rem;
-}
-
-.post-content blockquote {
-  margin: 2rem 0;
-  padding: 1.5rem 2rem;
-  background: var(--bg-glass);
-  border-left: 4px solid var(--neon-purple);
-  border-radius: 0 var(--radius-md) var(--radius-md) 0;
-  font-style: italic;
-  color: var(--text-light);
-}
-
-.post-content code {
-  background: var(--bg-elevated);
+.blog-detail-body code {
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid var(--cyber-cyan);
   padding: 0.2rem 0.5rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.9em;
-  color: var(--neon-cyan);
+  color: var(--cyber-cyan);
 }
 
-.post-content pre {
-  background: var(--bg-deep);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
+.blog-detail-body pre {
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid var(--cyber-yellow);
   padding: 1.5rem;
   overflow-x: auto;
-  margin: 2rem 0;
+  margin: 1.5rem 0;
 }
 
-.post-content pre code {
-  background: transparent;
-  padding: 0;
-}
-
-/* Comments Section */
-.comments-section {
-  max-width: 800px;
-  margin: 0 auto;
-  padding-top: 3rem;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.comments-section h2 {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.875rem;
-  font-weight: 700;
-  color: var(--text-white);
-  margin-bottom: 2rem;
-  letter-spacing: -0.02em;
-}
-
-/* Comment Form */
-.comment-form {
-  margin-bottom: 3rem;
-}
-
-.comment-form .form-group {
-  margin-bottom: 1.5rem;
-}
-
-/* Login Prompt */
-.login-prompt {
-  padding: 1.75rem;
-  background: rgba(128, 0, 255, 0.08);
-  border: 1px solid rgba(128, 0, 255, 0.2);
-  border-radius: var(--radius-lg);
-  text-align: center;
-  margin-bottom: 2rem;
-  color: var(--text-medium);
-}
-
-.login-prompt a {
-  color: var(--neon-cyan);
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.login-prompt a:hover {
-  color: var(--neon-purple);
-  text-shadow: 0 0 10px rgba(128, 0, 255, 0.3);
-}
-
-/* Comments List */
-.comments-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.comment-item {
-  padding: 1.75rem;
-  background: var(--bg-glass);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  transition: all 0.3s ease;
-}
-
-.comment-item:hover {
-  border-color: rgba(128, 0, 255, 0.3);
-  box-shadow: 0 0 30px rgba(128, 0, 255, 0.1);
-}
-
-.comment-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.comment-author {
-  font-weight: 600;
-  color: var(--text-white);
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.comment-avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--gradient-cosmic);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.85rem;
-  color: white;
-  font-weight: 600;
-}
-
-.comment-date {
-  color: var(--text-muted);
-  font-size: 0.85rem;
-}
-
-.comment-body {
-  color: var(--text-medium);
-  line-height: 1.8;
-}
-
-/* No Comments */
-.no-comments {
-  text-align: center;
-  color: var(--text-muted);
-  padding: 4rem 2rem;
-  background: var(--bg-glass);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-}
-
-.no-comments-icon {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  font-size: 1.5rem;
-  opacity: 0.6;
-}
-
-/* Back Link */
-.back-link {
+.back-button {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--text-muted);
+  font-family: 'Orbitron', sans-serif;
   text-decoration: none;
-  font-size: 0.95rem;
-  margin-bottom: 2rem;
+  color: var(--cyber-cyan);
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--cyber-cyan);
+  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
   transition: all 0.3s ease;
+  margin-bottom: 2rem;
 }
 
-.back-link:hover {
-  color: var(--neon-cyan);
-}
-
-.back-link svg {
-  transition: transform 0.3s ease;
-}
-
-.back-link:hover svg {
-  transform: translateX(-5px);
-}
-
-/* ========================================
-   RESPONSIVE
-   ======================================== */
-
-@media (max-width: 768px) {
-  .blog-detail-page {
-    padding: 2rem 0 4rem;
-  }
-
-  .post-title {
-    font-size: 1.875rem;
-  }
-
-  .post-meta {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-
-  .post-content {
-    font-size: 1rem;
-    line-height: 1.9;
-  }
-
-  .post-content h2 {
-    font-size: 1.5rem;
-  }
-
-  .post-content h3 {
-    font-size: 1.25rem;
-  }
-
-  .comment-item {
-    padding: 1.25rem;
-  }
-
-  .comments-section h2 {
-    font-size: 1.5rem;
-  }
+.back-button:hover {
+  background: rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
 }
