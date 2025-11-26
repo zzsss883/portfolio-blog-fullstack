@@ -1,205 +1,123 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 
 const Home = () => {
-  const [terminalText, setTerminalText] = useState('');
-  const fullText = 'WELCOME TO THE MATRIX_';
-
-  useEffect(() => {
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index < fullText.length) {
-        setTerminalText(fullText.slice(0, index + 1));
-        index++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 100);
-
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <div className="home">
-      {/* Terminal Hero */}
-      <section className="terminal-hero">
-        <div className="scanline-overlay"></div>
-        <div className="terminal-grid">
-          <div className="terminal-window">
-            <div className="terminal-header">
-              <span className="terminal-dot red"></span>
-              <span className="terminal-dot yellow"></span>
-              <span className="terminal-dot green"></span>
-              <span className="terminal-title">SYSTEM.TERMINAL</span>
-            </div>
-            <div className="terminal-body">
-              <p className="terminal-line">&gt; <span className="cyber-green">INITIALIZING SYSTEM...</span></p>
-              <p className="terminal-line">&gt; <span className="cyber-cyan">LOADING PORTFOLIO...</span></p>
-              <p className="terminal-line">&gt; <span className="cyber-magenta">ESTABLISHING CONNECTION...</span></p>
-              <p className="terminal-line">&gt; <span className="cyber-yellow">STATUS: ONLINE</span></p>
-              <p className="terminal-line terminal-blink">&gt; <span className="cyber-white">{terminalText}</span></p>
-            </div>
-          </div>
-
-          <div className="hero-content-cyber">
-            <div className="glitch-title" data-text="FULL-STACK">
-              <h1>FULL-STACK</h1>
-            </div>
-            <div className="glitch-title" data-text="DEVELOPER">
-              <h1>DEVELOPER</h1>
-            </div>
-            <p className="cyber-subtitle">
-              &lt; BUILDING THE FUTURE / ONE LINE AT A TIME &gt;
+      {/* Hero Section */}
+      <section className="hero">
+        <div className="container">
+          <div className="hero-content">
+            <h1 className="hero-title fade-in">
+              Build beautiful experiences
+            </h1>
+            <p className="hero-subtitle slide-up">
+              Full-stack developer crafting elegant solutions with modern technologies
             </p>
-            <div className="cyber-stats-inline">
-              <div className="stat-inline">
-                <span className="stat-num">10+</span>
-                <span className="stat-label">PROJECTS</span>
-              </div>
-              <div className="stat-inline">
-                <span className="stat-num">3+</span>
-                <span className="stat-label">YEARS</span>
-              </div>
-              <div className="stat-inline">
-                <span className="stat-num">99%</span>
-                <span className="stat-label">UPTIME</span>
-              </div>
-            </div>
-            <div className="hero-actions-cyber">
-              <Link to="/projects" className="btn btn-primary">
-                [ VIEW PROJECTS ]
+            <div className="hero-actions">
+              <Link to="/projects" className="btn btn-primary btn-large">
+                View Projects
               </Link>
-              <Link to="/contact" className="btn btn-outline">
-                [ CONTACT ]
+              <Link to="/contact" className="btn btn-outline btn-large">
+                Get in Touch
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Split Screen Features */}
-      <section className="split-features">
+      {/* Features Section */}
+      <section className="features section">
         <div className="container">
-          <div className="section-header-cyber">
-            <span className="cyber-bracket">[</span>
-            <h2>SYSTEM MODULES</h2>
-            <span className="cyber-bracket">]</span>
-          </div>
-
-          <div className="feature-grid-cyber">
-            {/* Projects Module */}
-            <Link to="/projects" className="cyber-panel feature-panel">
-              <div className="panel-corner top-left"></div>
-              <div className="panel-corner top-right"></div>
-              <div className="panel-corner bottom-left"></div>
-              <div className="panel-corner bottom-right"></div>
-
-              <div className="panel-header">
-                <span className="panel-id">[MOD_01]</span>
-                <span className="panel-status">ACTIVE</span>
+          <div className="features-grid">
+            <Link to="/projects" className="feature-card card">
+              <div className="feature-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 8L3 12L7 16M17 8L21 12L17 16M14 4L10 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </div>
-              <div className="panel-icon">
-                <div className="icon-hex">
-                  <span>&#x2328;</span>
-                </div>
-              </div>
-              <h3>PROJECTS</h3>
-              <p>{'// '}Explore portfolio of applications and solutions</p>
-              <div className="panel-footer">
-                <span className="cyber-arrow">&gt;&gt;</span>
-                <span>ACCESS MODULE</span>
-              </div>
+              <h3>Projects</h3>
+              <p>Explore a collection of applications and solutions built with cutting-edge technologies</p>
             </Link>
 
-            {/* Blog Module */}
-            <Link to="/blog" className="cyber-panel feature-panel">
-              <div className="panel-corner top-left"></div>
-              <div className="panel-corner top-right"></div>
-              <div className="panel-corner bottom-left"></div>
-              <div className="panel-corner bottom-right"></div>
-
-              <div className="panel-header">
-                <span className="panel-id">[MOD_02]</span>
-                <span className="panel-status">ACTIVE</span>
+            <Link to="/blog" className="feature-card card">
+              <div className="feature-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M7 7H17M7 12H17M7 17H13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </div>
-              <div className="panel-icon">
-                <div className="icon-hex">
-                  <span>&#x1F4E1;</span>
-                </div>
-              </div>
-              <h3>BLOG</h3>
-              <p>{'// '}Technical insights and development logs</p>
-              <div className="panel-footer">
-                <span className="cyber-arrow">&gt;&gt;</span>
-                <span>ACCESS MODULE</span>
-              </div>
+              <h3>Blog</h3>
+              <p>Technical insights, tutorials, and thoughts on software development</p>
             </Link>
 
-            {/* Contact Module */}
-            <Link to="/contact" className="cyber-panel feature-panel">
-              <div className="panel-corner top-left"></div>
-              <div className="panel-corner top-right"></div>
-              <div className="panel-corner bottom-left"></div>
-              <div className="panel-corner bottom-right"></div>
-
-              <div className="panel-header">
-                <span className="panel-id">[MOD_03]</span>
-                <span className="panel-status">ACTIVE</span>
+            <Link to="/contact" className="feature-card card">
+              <div className="feature-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 8L10.89 13.26C11.2187 13.4793 11.6049 13.5963 12 13.5963C12.3951 13.5963 12.7813 13.4793 13.11 13.26L21 8M5 19H19C19.5304 19 20.0391 18.7893 20.4142 18.4142C20.7893 18.0391 21 17.5304 21 17V7C21 6.46957 20.7893 5.96086 20.4142 5.58579C20.0391 5.21071 19.5304 5 19 5H5C4.46957 5 3.96086 5.21071 3.58579 5.58579C3.21071 5.96086 3 6.46957 3 7V17C3 17.5304 3.21071 18.0391 3.58579 18.4142C3.96086 18.7893 4.46957 19 5 19Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </div>
-              <div className="panel-icon">
-                <div className="icon-hex">
-                  <span>&#x1F4E7;</span>
-                </div>
-              </div>
-              <h3>CONTACT</h3>
-              <p>{'// '}Establish communication channel</p>
-              <div className="panel-footer">
-                <span className="cyber-arrow">&gt;&gt;</span>
-                <span>ACCESS MODULE</span>
-              </div>
+              <h3>Contact</h3>
+              <p>Let's collaborate on your next project or discuss new opportunities</p>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Tech Stack Display */}
-      <section className="tech-display">
+      {/* Tech Stack Section */}
+      <section className="tech-stack section section-bg">
         <div className="container">
-          <div className="tech-monitor">
-            <div className="monitor-screen">
-              <div className="monitor-header">
-                <span>TECH_STACK.SYS</span>
-                <span className="monitor-blink">●</span>
+          <div className="section-header">
+            <h2>Technologies</h2>
+            <p>Building with modern and proven tools</p>
+          </div>
+
+          <div className="tech-grid">
+            <div className="tech-item">
+              <div className="tech-info">
+                <span className="tech-name">React</span>
+                <span className="tech-level">Advanced</span>
               </div>
-              <div className="tech-grid">
-                <div className="tech-item">
-                  <span className="tech-icon">▓</span>
-                  <span className="tech-name">REACT.JS</span>
-                  <div className="tech-bar">
-                    <div className="tech-progress" style={{width: '95%'}}></div>
-                  </div>
+              <div className="tech-bar-wrapper">
+                <div className="tech-bar">
+                  <div className="tech-progress" style={{width: '95%'}}></div>
                 </div>
-                <div className="tech-item">
-                  <span className="tech-icon">▓</span>
-                  <span className="tech-name">NODE.JS</span>
-                  <div className="tech-bar">
-                    <div className="tech-progress" style={{width: '90%'}}></div>
-                  </div>
+              </div>
+            </div>
+
+            <div className="tech-item">
+              <div className="tech-info">
+                <span className="tech-name">Node.js</span>
+                <span className="tech-level">Advanced</span>
+              </div>
+              <div className="tech-bar-wrapper">
+                <div className="tech-bar">
+                  <div className="tech-progress" style={{width: '90%'}}></div>
                 </div>
-                <div className="tech-item">
-                  <span className="tech-icon">▓</span>
-                  <span className="tech-name">MONGODB</span>
-                  <div className="tech-bar">
-                    <div className="tech-progress" style={{width: '85%'}}></div>
-                  </div>
+              </div>
+            </div>
+
+            <div className="tech-item">
+              <div className="tech-info">
+                <span className="tech-name">MongoDB</span>
+                <span className="tech-level">Proficient</span>
+              </div>
+              <div className="tech-bar-wrapper">
+                <div className="tech-bar">
+                  <div className="tech-progress" style={{width: '85%'}}></div>
                 </div>
-                <div className="tech-item">
-                  <span className="tech-icon">▓</span>
-                  <span className="tech-name">PYTHON</span>
-                  <div className="tech-bar">
-                    <div className="tech-progress" style={{width: '88%'}}></div>
-                  </div>
+              </div>
+            </div>
+
+            <div className="tech-item">
+              <div className="tech-info">
+                <span className="tech-name">Python</span>
+                <span className="tech-level">Proficient</span>
+              </div>
+              <div className="tech-bar-wrapper">
+                <div className="tech-bar">
+                  <div className="tech-progress" style={{width: '88%'}}></div>
                 </div>
               </div>
             </div>
@@ -208,28 +126,14 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="cta-cyber">
+      <section className="cta section">
         <div className="container">
-          <div className="cta-frame">
-            <div className="frame-corners">
-              <span className="corner-tl"></span>
-              <span className="corner-tr"></span>
-              <span className="corner-bl"></span>
-              <span className="corner-br"></span>
-            </div>
-            <div className="cta-content">
-              <h2 className="cta-title">
-                <span className="cyber-bracket">&lt;</span>
-                READY TO COLLABORATE?
-                <span className="cyber-bracket">/&gt;</span>
-              </h2>
-              <p className="cta-text">
-                {'// '}Let's build something extraordinary together
-              </p>
-              <Link to="/contact" className="btn btn-primary btn-large">
-                [ INITIATE CONTACT ]
-              </Link>
-            </div>
+          <div className="cta-content">
+            <h2>Ready to work together?</h2>
+            <p>Let's create something extraordinary</p>
+            <Link to="/contact" className="btn btn-primary btn-large">
+              Start a Conversation
+            </Link>
           </div>
         </div>
       </section>

@@ -1,14 +1,15 @@
 /* ========================================
-   BLOG DETAIL PAGE - CYBERPUNK
+   BLOG DETAIL PAGE - APPLE DESIGN
    ======================================== */
 
 .blog-detail-page {
   padding: 4rem 0 6rem;
   min-height: calc(100vh - 75px);
+  background: var(--bg-primary);
 }
 
 .blog-detail-content {
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -16,7 +17,7 @@
 .blog-detail-header {
   margin-bottom: 3rem;
   padding-bottom: 2rem;
-  border-bottom: 2px solid rgba(0, 255, 255, 0.2);
+  border-bottom: 1px solid var(--apple-gray-5);
 }
 
 .blog-detail-meta {
@@ -24,75 +25,95 @@
   align-items: center;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
   font-size: 0.85rem;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
 }
 
 .blog-detail-title {
-  font-family: 'Orbitron', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
   font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 900;
-  color: var(--cyber-cyan);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  text-shadow: 0 0 20px var(--cyber-cyan);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 .blog-detail-body {
-  font-family: 'Share Tech Mono', monospace;
-  line-height: 1.9;
-  color: var(--text-white);
-  padding: 2.5rem;
-  background: rgba(0, 0, 0, 0.5);
-  border: 2px solid var(--cyber-cyan);
-  clip-path: polygon(25px 0, 100% 0, 100% calc(100% - 25px), calc(100% - 25px) 100%, 0 100%, 0 25px);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+  line-height: 1.8;
+  color: var(--text-primary);
+  padding: 2rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--apple-gray-4);
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  letter-spacing: -0.016em;
 }
 
 .blog-detail-body h2,
 .blog-detail-body h3 {
-  font-family: 'Orbitron', sans-serif;
-  color: var(--cyber-magenta);
-  text-transform: uppercase;
-  text-shadow: 0 0 10px var(--cyber-magenta);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+  color: var(--text-primary);
+  font-weight: 700;
   margin: 2rem 0 1rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 .blog-detail-body a {
-  color: var(--cyber-cyan);
-  border-bottom: 1px solid var(--cyber-cyan);
+  color: var(--apple-blue);
+  border-bottom: 1px solid var(--apple-blue);
   text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.blog-detail-body a:hover {
+  opacity: 0.7;
 }
 
 .blog-detail-body code {
-  background: rgba(0, 255, 255, 0.1);
-  border: 1px solid var(--cyber-cyan);
+  background: var(--bg-primary);
+  border: 1px solid var(--apple-gray-4);
   padding: 0.2rem 0.5rem;
-  color: var(--cyber-cyan);
+  color: var(--apple-purple);
+  border-radius: 4px;
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 0.9em;
 }
 
 .blog-detail-body pre {
-  background: rgba(0, 0, 0, 0.8);
-  border: 2px solid var(--cyber-yellow);
+  background: var(--bg-primary);
+  border: 1px solid var(--apple-gray-4);
   padding: 1.5rem;
   overflow-x: auto;
   margin: 1.5rem 0;
+  border-radius: var(--radius-md);
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .back-button {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: 'Orbitron', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
   text-decoration: none;
-  color: var(--cyber-cyan);
-  padding: 0.75rem 1.5rem;
-  border: 2px solid var(--cyber-cyan);
-  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
-  transition: all 0.3s ease;
+  color: var(--apple-blue);
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--apple-gray-4);
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
   margin-bottom: 2rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  background: var(--apple-gray-6);
 }
 
 .back-button:hover {
-  background: rgba(0, 255, 255, 0.1);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  background: var(--apple-blue);
+  color: white;
+  border-color: var(--apple-blue);
 }
